@@ -34,7 +34,7 @@ FINAL_MODEL = "palette_gen_global.pth"
 BEST_MODEL = "palette_gen_best.pth"
 OUTPUT_IMAGES = Path("./training_progress_images_palette")
 
-EPOCHS = 1        # Changed to 1 for initial test run
+EPOCHS = 15        # Changed to 1 for initial test run
 BATCH_SIZE = 16   # Increased from 8 — if OOM, drop back to 8
 LR = 1e-4         # Lower LR than GANs (standard for diffusion)
 T = 1000          # Number of diffusion timesteps (standard)
