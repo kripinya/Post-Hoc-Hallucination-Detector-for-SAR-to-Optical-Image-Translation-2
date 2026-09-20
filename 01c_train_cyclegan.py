@@ -30,7 +30,7 @@ FINAL_MODEL = "cyclegan_gen_global.pth"
 BEST_MODEL = "cyclegan_gen_best.pth"
 OUTPUT_IMAGES = Path("./training_progress_images_cyclegan")
 
-EPOCHS = 30
+EPOCHS = 1
 BATCH_SIZE = 4  # CycleGAN uses 4 generators/discriminators, needs more VRAM per batch
 LR = 0.0002
 B1 = 0.5
