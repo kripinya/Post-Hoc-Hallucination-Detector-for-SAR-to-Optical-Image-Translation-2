@@ -290,11 +290,14 @@ def main():
             optimizer_G.zero_grad(set_to_none=True)
 
             with torch.amp.autocast('cuda'):
+                # --- BUG FIX: Commented out original identity loss calculation ---
                 # Identity loss (helps preserve color when input is already in target domain)
-                id_B = G_AB(real_A)  # G_AB should generate optical-like from SAR
-                id_A = G_BA(real_B)  # G_BA should generate SAR-like from optical
-                loss_identity = (criterion_identity(id_A, real_B) * LAMBDA_IDENTITY * 0.5 +
-                                 criterion_identity(id_B, real_B) * LAMBDA_IDENTITY * 0.5)
+                # id_B = G_AB(real_A)  # G_AB should generate optical-like from SAR
+                # id_A = G_BA(real_B)  # G_BA should generate SAR-like from optical
+                # loss_identity = (criterion_identity(id_A, real_B) * LAMBDA_IDENTITY * 0.5 +
+                #                  criterion_identity(id_B, real_B) * LAMBDA_IDENTITY * 0.5)
+                # -----------------------------------------------------------------
+
                 # Note: identity loss on G_AB uses real_B as target only when channels match.
                 # Since SAR(2ch) != Optical(3ch), we skip the strict identity and only use
                 # the cycle consistency to enforce structure preservation.
